@@ -205,12 +205,13 @@ return message.channel.send("✅ Report sucessfully submitted!")
  return; 
 }
 	
-	client.on('message', async (message) => {
 
+client.on('message', (message) => {
 if (message.content ===('FUCK')) { 
  message.delete();
  message.author.send(`The word **fuck** is banned don't use try to use it because it will be automatically deleted!`)
-}
+});
+	
 });
 
 client.login(process.env.BOT_TOKEN); 
