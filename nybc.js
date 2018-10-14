@@ -26,18 +26,8 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     let avatarEmbed = new Discord.RichEmbed()
     .setAuthor(`${user.username}'s Profile Picture`)
     .setImage(user.displayAvatarURL)
-    .setColor("#2B547E")
-    .setTimestamp(new Date());
+    .setColor("#2B547E");
     message.channel.send(avatarEmbed);
-}
-
- if (message.content.startsWith(`${prefix}purge`)) {
-	 let args = message.content.slice(1).split(" ");
-  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You aren't allowed to use this command.")
-  if(!args[0]) return message.send("You need to set a number of messages to purge/delete.");
-  message.channel.bulkDelete(args[0]).then(() => {
-    message.channel.send(`Cleared about ${args[0]} messages!`).then(msg => msg.delete(5000));
-});
 }
 });
 
@@ -108,7 +98,6 @@ client.on('message', async (message) => {
     .addField("Bot Name", client.user.username)
     .addField("Bot Tag", client.user.tag)
     .addField("Date Of Creation", client.user.createdAt.toLocaleString())
-    .addField("Guilds", client.guilds.size)
     .addField("Users", client.users.size)
     .setTimestamp();
     return message.channel.send(botembed);
