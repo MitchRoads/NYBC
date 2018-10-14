@@ -26,12 +26,13 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     let avatarEmbed = new Discord.RichEmbed()
     .setAuthor(`${user.username}'s Profile Picture`)
     .setImage(user.displayAvatarURL)
-    .setColor("#ea9b67")
+    .setColor("#2B547E")
     .setTimestamp(new Date());
     message.channel.send(avatarEmbed);
 }
 
  if (message.content.startsWith(`${prefix}purge`)) {
+	 let args = message.content.slice(1).split(" ");
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You aren't allowed to use this command.")
   if(!args[0]) return message.send("You need to set a number of messages to purge/delete.");
   message.channel.bulkDelete(args[0]).then(() => {
@@ -39,6 +40,33 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
 });
 }
 });
+
+client.on('guildMemberAdd', (member) => {
+	
+  let guild = member.guild;
+  let server = member.guild.name;
+member.addRole(`500510515680903188`);
+  let logging = guild.channels.find(c => c.name === 'admin-logs');
+  let gembed = new Discord.RichEmbed()
+      .setTitle("User Enterance")
+      .setColor("#2B547E")
+      .setDescription(`Welcome ${member}, to {server}. You are either someone random or apart of the NYBC (National Youth Bike Council). Either way you are welcomed to stay in this channel until assigned a member or visitor role. To get one of these roles ping the preident or the bot developer.`)
+      .setTimestamp();
+  logging.send(gembed);
+	      });
+
+client.on('guildMemberRemove', (member) => {
+	
+  let guild = member.guild;
+  let server = member.guild.name;
+  let logging = guild.channels.find(c => c.name === 'admin-logs');
+  let gembed = new Discord.RichEmbed()
+      .setTitle("User Departure")
+      .setColor("#2B547E")
+      .setDescription(`Not sure why {member} left but, hopefully they will come back if they left on good terms.`)
+      .setTimestamp();
+  logging.send(gembed);
+	      });
 
 
 client.on('message', async (message) => {
@@ -54,7 +82,7 @@ client.on('message', async (message) => {
             let userEmbed = new Discord.RichEmbed()
             .setAuthor(`${user.username}'s Info`, user.displayAvatarURL)
             .setThumbnail(user.displayAvatarURL)
-            .setColor('#c2c5ea')
+            .setColor('#2B547E')
             .addField('User ID', user.id, true)
             .addField('Current Tag', user.tag, true)
             .addField('Server Nickname', `${player.displayName}`, true) 
@@ -66,7 +94,7 @@ client.on('message', async (message) => {
             .addField('Joined At:', `${player.joinedAt}`)
             .addField('Account Created On:', `${player.user.createdAt}`)
             .setThumbnail(iicon)
-            .setTimestamp(new Date());
+            .setTimestamp();
             message.channel.send(userEmbed)
 	}
 
@@ -75,14 +103,14 @@ client.on('message', async (message) => {
     let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setTitle("Bot Information")
-    .setColor("#dcc2ea")
+    .setColor("#2B547E")
     .setThumbnail(bicon)
     .addField("Bot Name", client.user.username)
     .addField("Bot Tag", client.user.tag)
     .addField("Date Of Creation", client.user.createdAt.toLocaleString())
     .addField("Guilds", client.guilds.size)
     .addField("Users", client.users.size)
-    .setTimestamp(new Date());
+    .setTimestamp();
     return message.channel.send(botembed);
   }
 
@@ -95,7 +123,7 @@ client.on('message', async (message) => {
     .setTitle("Server Information")
     .setDescription(`Infomration on ${server}:`)
     .setThumbnail() 
-    .setColor("#c2dbea")
+    .setColor("#2B547E")
     .addField('Guild ID', message.guild.id, true)
     .addField('Guild Name', message.guild.name, true)
     .addField('Guild Channel Total', message.guild.channels.size, true)
@@ -105,7 +133,7 @@ client.on('message', async (message) => {
     .addField('Date Of Server Creation', message.guild.createdAt.toLocaleDateString(), true)
     .addField('Guild Owner', message.guild.owner, true)
     .setThumbnail(sicon) 
-    .setTimestamp(new Date());
+    .setTimestamp();
     message.channel.send(serverembed);
   }
 });
