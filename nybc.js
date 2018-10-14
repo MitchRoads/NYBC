@@ -212,8 +212,8 @@ let foundInText = false;
 
 
 if (foundInText) {
- message.channel.send(`Profanity is banned in this server, dont' let it happen again.`);
- message.delete().catch(O_o=>{});
+ message.channel.send(`Profanity is banned in this server, dont' let it happen again.`)
+ message.delete();
 return;
 }
 }
