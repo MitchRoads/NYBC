@@ -124,6 +124,7 @@ client.on('message', async (message) => {
     .setThumbnail(sicon) 
     .setTimestamp();
     message.channel.send(serverembed);
+	}
   });
 	
 	client.on('messageDelete', async (message) => {
