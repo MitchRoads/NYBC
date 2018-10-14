@@ -170,10 +170,11 @@ client.on("channelDelete", async (channel) => {
       .setTimestamp();
   logging.send(cembed);
 });
+	if (message.content.startsWith(`${prefix}report`)) {
 	
 let args = message.content.slice(1).split(" ");
 let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if(!rUser) return message.channel.send("I couldn't find that user.");
+  if(!rUser) return message.channel.send("You haven't selected/mentioned a user whose info you want to see.");
   let reason = args.slice(1).join(" ") || "None";
 
   let reportEmbed = new Discord.RichEmbed()
