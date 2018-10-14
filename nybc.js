@@ -205,7 +205,7 @@ let blacklisted = ['fuck', 'fucking', 'shit'];
 
 let foundInText = false;
  for (var i in blacklisted) {
- if message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
+  if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
 }
 
 if (foundInText) { 
