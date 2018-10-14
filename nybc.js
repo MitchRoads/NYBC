@@ -20,6 +20,8 @@ for (x = 0; x < profanities.length; x++) {
   return;
  }
 }
+}
+
 
  if (message.content.startsWith(`${prefix}avatar`)) { 
 	   let user = message.mentions.users.first(); 
