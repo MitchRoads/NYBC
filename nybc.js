@@ -13,7 +13,7 @@ client.on("message", async message => {
 const profanities = require(`profanities`)
 
 for (x = 0; x < profanities.length; x++) {
- if (message.content.toLowerrCase() == profanities[x].toLowerCase()) {
+ if (message.content.toUpperCase() == profanities[x].toUpperCase()) {
 	  if (message.content.toLowerCase() == profanities[x].toLowerCase()) {
   message.channel.send(`You aren't allowed to say that word, please don't use it again. 😤`)
   message.delete();
