@@ -211,9 +211,10 @@ let foundInText = false;
   if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
 }
 
-if (foundInText) { 
+if (foundInText) {
  message.channel.send(`Profanity is banned in this server, dont' let it happen again.`);
  message.delete();
+return;
 }
 });
 	
