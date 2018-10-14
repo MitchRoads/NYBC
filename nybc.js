@@ -177,7 +177,7 @@ client.on("channelDelete", async (channel) => {
 	
 let args = message.content.slice(1).split(" ");
 let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if(!rUser) return message.channel.send("You haven't selected/mentioned a user whose info you want to see.");
+  if(!rUser) return message.channel.send("You haven't selected/mentioned a user who you want to report.");
   let reason = args.slice(1).join(" ") || "None";
 
   let reportEmbed = new Discord.RichEmbed()
