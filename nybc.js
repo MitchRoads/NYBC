@@ -204,7 +204,7 @@ return message.channel.send("✅ Report sucessfully submitted!")
 	});
 	
 client.on('message', async (message) => {
-let blacklisted = ['fuck', 'fucking', 'shit'];
+let blacklisted = ['fuck', 'Fuck', 'fucking', 'shit'];
 
 let foundInText = false;
  for (var i in blacklisted) {
@@ -213,7 +213,7 @@ let foundInText = false;
 
 if (foundInText) {
  message.channel.send(`Profanity is banned in this server, dont' let it happen again.`);
- message.delete();
+ message.delete().catch(O_o=>{});
 return;
 }
 }
