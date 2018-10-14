@@ -213,7 +213,7 @@ let foundInText = false;
 
 if (foundInText) {
  message.channel.send(`Profanity is banned in this server, dont' let it happen again.`)
- message.delete();
+ message.delete(5000);
 return;
 }
 }
