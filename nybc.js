@@ -200,17 +200,18 @@ let rUser = message.guild.member(message.mentions.users.first() || message.guild
 return message.channel.send("✅ Report sucessfully submitted!")
 	}
 	});
-	
-	if (sender.id === `500498510072905728`) { 
- return; 
-}
-	
+client.on('message', async (message) => {	
+let blacklisted = ['fuck', 'fucking', 'shit'];
 
-client.on('message', (message) => {
-if (message.content ===('FUCK')) { 
+let foundInText = false;
+ for (var i in blacklisted) {
+ if message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
+}
+
+if (foundInText) { 
  message.delete();
- message.author.send(`The word **fuck** is banned don't use try to use it because it will be automatically deleted!`)
-});
+ message.author.send(`Profanity is banned in this server, dont' let it happen again.`) 
+}
 	
 });
 
