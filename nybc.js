@@ -15,7 +15,7 @@ const profanities = require(`profanities`)
 for (x = 0; x < profanities.length; x++) {
  if (message.content.toUpperCase() == profanities[x].toUpperCase()) {
 	  if (message.content.toLowerCase() == profanities[x].toLowerCase()) {
-  message.channel.send(`You aren't allowed to say that word, please don't use it again. 😤`)
+  message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
   message.delete();
   return;
  }
@@ -212,8 +212,8 @@ let foundInText = false;
 }
 
 if (foundInText) { 
+ message.channel.send(`Profanity is banned in this server, dont' let it happen again.`);
  message.delete();
- message.author.send(`Profanity is banned in this server, dont' let it happen again.`) 
 }
 });
 	
