@@ -195,6 +195,7 @@ let rUser = message.guild.member(message.mentions.users.first() || message.guild
   message.delete().catch(O_o=>{});
   reportschannel.send(reportEmbed);
 return message.channel.send("✅ Report sucessfully submitted!")
+	}
 });
 
 client.login(process.env.BOT_TOKEN); 
