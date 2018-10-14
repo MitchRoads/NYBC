@@ -199,13 +199,13 @@ let foundInText = false;
  for (var i in blacklisted) {
   if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
 	   if (message.content.toUpperCase().includes(blacklisted[i].toUpperCase())) foundInText = true;
+	 }
 
 
 if (foundInText) {
  message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
  message.delete(0);
 return;
-}
 }
 });
 	
