@@ -201,16 +201,15 @@ return message.channel.send("✅ Report sucessfully submitted!")
 	}
 	});
 	
-	client.on('message', async (message, sender) => {
 	if (sender.id === `500498510072905728`) { 
  return; 
 }
 	
+	client.on('message', async (message) => {
 
-if (message.includes('FUCK')) { 
+if (message.content ===('FUCK')) { 
  message.delete();
  message.author.send(`The word **fuck** is banned don't use try to use it because it will be automatically deleted!`)
-}
 }
 });
 
