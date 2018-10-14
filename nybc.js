@@ -193,7 +193,7 @@ return message.channel.send("✅ Report sucessfully submitted!")
 	});
 	
 client.on('message', async (message) => {
-let blacklisted = ['fuck', 'Fuck', 'fucking', 'shit'];
+let blacklisted = ['fuck', 'Fuck', 'fucking', 'Fucking', 'shit', 'Shit', 'asshole', 'Asshole', 'damn', 'Damn', 'motherfucker', 'Motherfucker', 'nigger', 'Nigger', 'faggot', 'Faggot', 'bitch', 'Bitch'];
 
 let foundInText = false;
  for (var i in blacklisted) {
