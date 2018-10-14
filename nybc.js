@@ -196,6 +196,5 @@ let rUser = message.guild.member(message.mentions.users.first() || message.guild
   reportschannel.send(reportEmbed);
 return message.channel.send("✅ Report sucessfully submitted!")
 	}
-});
 
 client.login(process.env.BOT_TOKEN); 
