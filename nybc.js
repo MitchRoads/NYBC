@@ -209,12 +209,13 @@ let blacklisted = ['fuck', 'fucking', 'shit'];
 let foundInText = false;
  for (var i in blacklisted) {
   if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
-}
+
 
 if (foundInText) {
  message.channel.send(`Profanity is banned in this server, dont' let it happen again.`);
  message.delete();
 return;
+}
 }
 });
 	
