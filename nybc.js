@@ -171,6 +171,8 @@ client.on("channelDelete", async (channel) => {
       .setTimestamp();
   logging.send(cembed);
 });
+
+	client.on('message', async (message) => {
 	if (message.content.startsWith(`${prefix}report`)) {
 	
 let args = message.content.slice(1).split(" ");
@@ -196,5 +198,6 @@ let rUser = message.guild.member(message.mentions.users.first() || message.guild
   reportschannel.send(reportEmbed);
 return message.channel.send("✅ Report sucessfully submitted!")
 	}
+	});
 
 client.login(process.env.BOT_TOKEN); 
