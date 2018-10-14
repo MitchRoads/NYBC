@@ -191,22 +191,22 @@ let rUser = message.guild.member(message.mentions.users.first() || message.guild
 return message.channel.send("✅ Report sucessfully submitted!")
 	}
 	});
-	
-client.on('message', async (message) => {
-let blacklisted = ['fuck', 'Fuck', 'fucking', 'shit'];
+const badWords = [
+  'shit',
+  'ass',
+  'fuck',
+  'bitch'
+];
 
-let foundInText = false;
- for (var i in blacklisted) {
-  if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
-	   if (message.content.toUpperCase().includes(blacklisted[i].toUpperCase())) foundInText = true;
-	 }
-
-
-if (foundInText) {
- message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
- message.delete(0);
-return;
-}
+client.on('message', message => {
+  let words = message.content.toLowerCase().trim().match(/\w+|\s+|[^\s\w]+/g);
+  let containsBadWord = words.some(word => {
+    return badWords.includes(word);
+  });
+  if (containsBadWord) {
+    message.delete(1);
+    message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`);
+  }
 });
 	
 });
