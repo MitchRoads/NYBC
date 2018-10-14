@@ -10,17 +10,6 @@ const { prefix, token } = require('./botconfig.json');
 });
 
 client.on("message", async message => {
-const profanities = require(`profanities`)
-
-for (x = 0; x < profanities.length; x++) {
- if (message.content.toUpperCase() == profanities[x].toUpperCase()) {
-	  if (message.content.toLowerCase() == profanities[x].toLowerCase()) {
-  message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
-  message.delete();
-  return;
- }
-}
-}
 
 
  if (message.content.startsWith(`${prefix}avatar`)) { 
@@ -209,10 +198,11 @@ let blacklisted = ['fuck', 'Fuck', 'fucking', 'shit'];
 let foundInText = false;
  for (var i in blacklisted) {
   if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
+	   if (message.content.toUpperCase().includes(blacklisted[i].toUpperCase())) foundInText = true;
 
 
 if (foundInText) {
- message.channel.send(`Profanity is banned in this server, dont' let it happen again.`)
+ message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
  message.delete(0);
 return;
 }
