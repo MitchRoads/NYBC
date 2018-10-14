@@ -30,7 +30,7 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     .setColor("#2B547E");
     message.channel.send(avatarEmbed);
 }
-});
+
 
 client.on('guildMemberAdd', (member) => {
 	
