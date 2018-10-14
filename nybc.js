@@ -124,7 +124,75 @@ client.on('message', async (message) => {
     .setThumbnail(sicon) 
     .setTimestamp();
     message.channel.send(serverembed);
-  }
+  });
+	
+	client.on('messageDelete', async (message) => {
+    let logging = message.guild.channels.find(c => c.name === 'admin-logs');
+    const dembed = new Discord.RichEmbed()
+        .setTitle("Message Deleted")
+        .setColor("#2B547E")
+        .setDescription(`A message sent by ${message.author} was deleted in ${message.channel}`)
+        .addField("Message:", `${message.cleanContent}`)
+        .setTimestamp();
+    logging.send(dembed);
+});
+
+client.on("messageUpdate", function (oldMessage, newMessage, channel) {
+    if (newMessage.channel.type == 'text' && newMessage.cleanContent != oldMessage.cleanContent) {
+        let logging = newMessage.guild.channels.find(c => c.name === 'admin-logs');
+        const eembed = new Discord.RichEmbed()
+            .setTitle("Message Edited")
+            .setColor("#2B547E")
+            .setDescription(`A message sent by ${newMessage.author} was edited in ${newMessage.channel}`)
+            .addField(`Old message:`, `${oldMessage.cleanContent}`)
+            .addField(`New Message:`, `${newMessage.cleanContent}`)
+            .setTimestamp();
+        logging.send(eembed);
+    }
+});
+	
+	client.on("channelCreate", async (channel) => {
+  let logging = channel.guild.channels.find(c => c.name === 'admin-logs');
+  const cembed = new Discord.RichEmbed()
+      .setTitle("Channel Created")
+      .setColor("#2B547E")
+      .setDescription(`A **${channel.type} channel**, by the name of **${channel.name}**, was just created!`)
+      .setTimestamp();
+  logging.send(cembed);
+});
+
+client.on("channelDelete", async (channel) => {
+  let logging = channel.guild.channels.find(c => c.name === 'admin-logs');
+  const cembed = new Discord.RichEmbed()
+      .setTitle("Channel Remove")
+      .setColor("#2B547E")
+      .setDescription(`A **${channel.type} channel**, by the name of **${channel.name}**, was just deleted!`)
+      .setTimestamp();
+  logging.send(cembed);
+});
+	
+let args = message.content.slice(1).split(" ");
+let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!rUser) return message.channel.send("I couldn't find that user.");
+  let reason = args.slice(1).join(" ") || "None";
+
+  let reportEmbed = new Discord.RichEmbed()
+  .setDescription("Reports")
+  .setColor("#2B547E")
+  .addField("Reported User", `${rUser} with ID: ${rUser.id}`)
+  .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
+  .addField("Channel", message.channel)
+  .addField("Time", message.createdAt)
+  .addField("Reason", reason)
+  .setTimestamp();
+
+  let reportschannel = message.guild.channels.find(c => c.name === 'admin-logs');
+  if(!reportschannel) return message.channel.send("I can't find logging channel.");
+
+
+  message.delete().catch(O_o=>{});
+  reportschannel.send(reportEmbed);
+return message.channel.send("✅ Report sucessfully submitted!")
 });
 
 client.login(process.env.BOT_TOKEN); 
