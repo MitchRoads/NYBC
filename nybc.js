@@ -36,7 +36,7 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
   if(!args[0]) return message.send("You need to set a number of messages to purge/delete.");
   message.channel.bulkDelete(args[0]).then(() => {
     message.channel.send(`Cleared about ${args[0]} messages!`).then(msg => msg.delete(5000));
-}
+});
 }
 });
 
