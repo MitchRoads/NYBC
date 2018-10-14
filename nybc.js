@@ -6,7 +6,7 @@ const { prefix, token } = require('./botconfig.json');
 
   client.on("ready", async () => {
   console.log(`${client.user.username} has rode into the online!`);
-  client.user.setActivity("National Bike Warfare");
+  client.user.setActivity("National Bike Warfare", {type: "WATCHING"});
 });
 
 client.on("message", async message => {
@@ -46,7 +46,7 @@ client.on('guildMemberAdd', (member) => {
   let guild = member.guild;
   let server = member.guild.name;
 member.addRole(`500510515680903188`);
-  let logging = guild.channels.find(c => c.name === 'admin-logs');
+  let logging = guild.channels.find(c => c.name === 'welcome-leaves');
   let gembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
       .setColor("#2B547E")
@@ -59,7 +59,7 @@ client.on('guildMemberRemove', (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
-  let logging = guild.channels.find(c => c.name === 'admin-logs');
+  let logging = guild.channels.find(c => c.name === 'welcome-leaves');
   let gembed = new Discord.RichEmbed()
       .setTitle("User Departure")
       .setColor("#2B547E")
