@@ -106,7 +106,6 @@ client.on('message', async (message) => {
     .addField("Guilds", client.guilds.size, true)
     .addField("Users", client.users.size, true)
     .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
-    .addField("Bot Uptime", moment.duration(client.uptime).format('d[d ]h[h ]m[m ]s[s]'), true)
     .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png")
     .setTimestamp();
     return message.channel.send(botembed);
