@@ -17,7 +17,7 @@ client.on("message", async message => {
 	
 	
 for (x = 0; x < profanities.length; x++) {
- if message.content.toUpperCase() == profanities[x].toUpperCase()) {
+ if (message.content.toUpperCase() == profanities[x].toUpperCase()) {
  message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned! Read the rules again please.`)
  message.delete();
  return; 
