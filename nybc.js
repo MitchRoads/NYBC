@@ -193,8 +193,9 @@ return message.channel.send("✅ Report sucessfully submitted!")
 	});
 	
 client.on('message', async (message) => {
+if (message.author.client) return;
 let blacklisted = ['fuck', 'Fuck', 'fucking', 'Fucking', 'shit', 'Shit', 'asshole', 'Asshole', 'damn', 'Damn', 'motherfucker', 'Motherfucker', 'nigger', 'Nigger', 'faggot', 'Faggot', 'bitch', 'Bitch'];
-
+if (message.author.client) return;
 let foundInText = false;
  for (var i in blacklisted) {
   if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
@@ -203,7 +204,6 @@ let foundInText = false;
 
 if (foundInText) {
  message.delete(1);
-if (message.author.client) return;
 message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
 return;
 }
