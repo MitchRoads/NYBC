@@ -99,7 +99,7 @@ client.on('message', async (message) => {
     let botembed = new Discord.RichEmbed()
     .setTitle("Bot Information")
     .setDescription("Information on NYBC:")
-    .setColor(0x374f6b)
+    .setColor("#2B547E")
     .setThumbnail(bicon)
     .addField("Bot Name", client.user.username, true)
     .addField("Bot Tag", client.user.tag, true)
