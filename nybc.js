@@ -63,8 +63,6 @@ client.on('guildMemberRemove', (member) => {
       .setTimestamp();
   logging.send(gembed);
 	      });
-
-client.on('message', async (message) => {
 	
 	if (message.content.startsWith(`${prefix}userinfo`)) {
 
