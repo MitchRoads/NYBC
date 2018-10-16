@@ -32,7 +32,7 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     .setAuthor(`${user.username}'s Profile Picture`)
     .setImage(user.displayAvatarURL)
     .setColor("#2B547E");
-    message.channel.send(avatarEmbed);
+    return message.channel.send(avatarEmbed);
 }
 
 
@@ -90,25 +90,27 @@ client.on('message', async (message) => {
             .addField('Account Created On:', `${player.user.createdAt}`)
             .setThumbnail(iicon)
             .setTimestamp();
-	 message.channel.send(userEmbed);
+	 return message.channel.send(userEmbed);
 	}
-
-	if (message.content.startsWith(`${prefix}info`)) {
+	
+   if (message.content.startsWith(`${prefix}botinfo`)) {
 
     let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setTitle("Bot Information")
-    .setColor("#2B547E")
+    .setDescription("Information on NYBC:")
+    .setColor(0x374f6b)
     .setThumbnail(bicon)
     .addField("Bot Name", client.user.username, true)
     .addField("Bot Tag", client.user.tag, true)
-    .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
+    .addField("Guilds", client.guilds.size, true)
     .addField("Users", client.users.size, true)
-    .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png") 
+    .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
+    .addField("Bot Uptime", moment.duration(client.uptime).format('d[d ]h[h ]m[m ]s[s]'), true)
+    .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png")
     .setTimestamp();
-  message.channel.send(botembed);
-  }
-
+    return message.channel.send(botembed);
+  }  
 	
 	if (message.content.startsWith(`${prefix}serverinfo`)) {
 		
@@ -125,11 +127,11 @@ client.on('message', async (message) => {
     .addField('Guild Member Total', message.guild.memberCount, true)
     .addField('Guild Role Total', message.guild.roles.size, true)
     .addField('Guild Region', message.guild.region, true)
-    .addField('Date Of Server Creation', message.guild.createdAt.toLocaleDateString(), true)
+    .addField('Date Of Guild Creation', message.guild.createdAt.toLocaleDateString(), true)
     .addField('Guild Owner', message.guild.owner, true)
     .setThumbnail(sicon) 
     .setTimestamp();
-  message.channel.send(serverembed);
+  return message.channel.send(serverembed);
 	}
   });
 	
