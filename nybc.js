@@ -91,7 +91,7 @@ client.on('message', async (message) => {
             .addField('Account Created On:', `${player.user.createdAt}`)
             .setThumbnail(iicon)
             .setTimestamp();
-	 return message.channel.send(userEmbed);
+	 message.channel.send(userEmbed);
 	}
 	
    if (message.content.startsWith(`${prefix}info`)) {
@@ -109,7 +109,7 @@ client.on('message', async (message) => {
     .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
     .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png")
     .setTimestamp();
-    return message.channel.send(botembed);
+    message.channel.send(botembed);
   }  
 	
 	if (message.content.startsWith(`${prefix}serverinfo`)) {
@@ -131,7 +131,7 @@ client.on('message', async (message) => {
     .addField('Guild Owner', message.guild.owner, true)
     .setThumbnail(sicon) 
     .setTimestamp();
-  return message.channel.send(serverembed);
+   message.channel.send(serverembed);
 	}
   });
 	
