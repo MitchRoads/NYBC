@@ -100,10 +100,11 @@ client.on('message', async (message) => {
     .setTitle("Bot Information")
     .setColor("#2B547E")
     .setThumbnail(bicon)
-    .addField("Bot Name", client.user.username)
-    .addField("Bot Tag", client.user.tag)
-    .addField("Date Of Creation", client.user.createdAt.toLocaleString())
-    .addField("Users", client.users.size)
+    .addField("Bot Name", client.user.username, true)
+    .addField("Bot Tag", client.user.tag, true)
+    .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
+    .addField("Users", client.users.size, true)
+    .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png") 
     .setTimestamp();
     return message.channel.send(botembed);
   }
@@ -115,7 +116,7 @@ client.on('message', async (message) => {
     let server = message.guild.name;
     let serverembed = new Discord.RichEmbed()
     .setTitle("Server Information")
-    .setDescription(`Infomration on ${server}:`)
+    .setDescription(`Information on ${server}:`)
     .setThumbnail() 
     .setColor("#2B547E")
     .addField('Guild ID', message.guild.id, true)
