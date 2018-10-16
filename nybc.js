@@ -200,11 +200,10 @@ let foundInText = false;
   if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
 	   if (message.content.toUpperCase().includes(blacklisted[i].toUpperCase())) foundInText = true;
 	 }
-if message.author == client.user:
-        return
-    if message.author.bot: return
+
 if (foundInText) {
  message.delete(1);
+if (message.author.client) return;
 message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
 return;
 }
