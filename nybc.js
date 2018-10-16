@@ -3,11 +3,15 @@ const superagent = require("snekfetch");
 const client = new Discord.Client();
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
+const profanities = require('profanities')
 
   client.on("ready", async () => {
   console.log(`${client.user.username} has rode into the online!`);
   client.user.setActivity("National Bike Warfare", {type: "WATCHING"});
 });
+
+
+
 
 client.on("message", async message => {
 
@@ -202,7 +206,7 @@ let foundInText = false;
 	 }
 
 if (foundInText) {
- message.delete(1);
+ message.delete();
 message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
 return;
 }
