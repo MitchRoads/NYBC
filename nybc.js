@@ -64,13 +64,12 @@ client.on('guildMemberRemove', (member) => {
   logging.send(gembed);
 	      });
 	
-	if (message.content.startsWith(`${prefix}userinfo`)) {
+		if (message.content.startsWith(`${prefix}userinfo`)) {
 
- let member = message.mentions.users.first() || message.author
             let player = message.mentions.members.first() || message.member
-            let user = message.mentions.users.first();
             let iicon = player.user.displayAvatarURL;
-            let roles = message.mentions.members.first().roles.map(role => role).join(" ");
+            let roles = player.roles.map(role => role).join(" ");
+	    let user = player.user
         if(!user) return message.channel.send("You haven't selected/mentioned a user whose info you want to see.");
             let userEmbed = new Discord.RichEmbed()
             .setAuthor(`${user.username}'s Info`, user.displayAvatarURL)
@@ -88,7 +87,7 @@ client.on('guildMemberRemove', (member) => {
             .addField('Account Created On:', `${player.user.createdAt}`)
             .setThumbnail(iicon)
             .setTimestamp();
-	 return message.channel.send(userEmbed);
+	return message.channel.send(userEmbed);
 	}
 	
 	
