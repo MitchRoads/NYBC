@@ -93,7 +93,7 @@ client.on('message', async (message) => {
 	 return message.channel.send(userEmbed);
 	}
 	
-   if (message.content.startsWith(`${prefix}botinfo`)) {
+   if (message.content.startsWith(`${prefix}info`)) {
 
     let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
