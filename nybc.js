@@ -90,7 +90,7 @@ client.on('message', async (message) => {
             .addField('Account Created On:', `${player.user.createdAt}`)
             .setThumbnail(iicon)
             .setTimestamp();
-	 message.channel.send(userEmbed);
+	 return message.channel.send(userEmbed);
 	}
 	
 	
