@@ -204,8 +204,7 @@ let foundInText = false;
 
 if (foundInText) {
  message.delete(1);
- message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
-return;
+return  message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`);
 }
 });
 });
