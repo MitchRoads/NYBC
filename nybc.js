@@ -63,7 +63,6 @@ client.on('guildMemberRemove', (member) => {
       .setTimestamp();
   logging.send(gembed);
 	      });
-});
 
 client.on('message', async (message) => {
 	
@@ -94,33 +93,14 @@ client.on('message', async (message) => {
 	 message.channel.send(userEmbed);
 	}
 	
-   if (message.content.startsWith(`${prefix}info`)) {
-
-    let bicon = client.user.displayAvatarURL;
-    let botembed = new Discord.RichEmbed()
-    .setTitle("Bot Information")
-    .setDescription("Information on NYBC:")
-    .setColor("#2B547E")
-    .setThumbnail(bicon)
-    .addField("Bot Name", client.user.username, true)
-    .addField("Bot Tag", client.user.tag, true)
-    .addField("Guilds", client.guilds.size, true)
-    .addField("Users", client.users.size, true)
-    .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
-    .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png")
-    .setTimestamp();
-    message.channel.send(botembed);
-  }  
 	
-	if (message.content.startsWith(`${prefix}serverinfo`)) {
-		
+if (message.content.startsWith(`${prefix}serverinfo`)) {		
     let sicon = message.guild.iconURL;
     let server = message.guild.name;
     let serverembed = new Discord.RichEmbed()
     .setTitle("Server Information")
     .setDescription(`Information on ${server}:`)
-    .setThumbnail() 
-    .setColor("#2B547E")
+    .setColor(0x374f6b)
     .addField('Guild ID', message.guild.id, true)
     .addField('Guild Name', message.guild.name, true)
     .addField('Guild Channel Total', message.guild.channels.size, true)
@@ -129,11 +109,29 @@ client.on('message', async (message) => {
     .addField('Guild Region', message.guild.region, true)
     .addField('Date Of Server Creation', message.guild.createdAt.toLocaleDateString(), true)
     .addField('Guild Owner', message.guild.owner, true)
+    .setFooter(`${server}`, sicon)
     .setThumbnail(sicon) 
     .setTimestamp();
-   message.channel.send(serverembed);
-	}
-  });
+    return message.channel.send(serverembed);
+  }
+  
+   if (message.content.startsWith(`${prefix}botinfo`)) {
+
+    let bicon = client.user.displayAvatarURL;
+    let botembed = new Discord.RichEmbed()
+    .setTitle("Bot Information")
+    .setDescription("Information on WeatherDawn:")
+    .setColor(0x374f6b)
+    .setThumbnail(bicon)
+    .addField("Bot Name", client.user.username, true)
+    .addField("Bot Tag", client.user.tag, true)
+    .addField("Server Users", client.users.size, true)
+    .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
+    .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png")
+    .setTimestamp();
+    return message.channel.send(botembed);
+  }      
+});
 	
 	client.on('messageDelete', async (message) => {
     let logging = message.guild.channels.find(c => c.name === 'admin-logs');
