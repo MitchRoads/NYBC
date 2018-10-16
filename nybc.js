@@ -18,8 +18,8 @@ client.on("message", async message => {
 	
 for (x = 0; x < profanities.length; x++) {
  if (message.content.toUpperCase() == profanities[x].toUpperCase()) {
- return message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned! Read the rules again please. 😤`)
  message.delete();
+ return message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned! Read the rules again please. 😤`)
  return; 
 }
 } 
@@ -90,7 +90,7 @@ client.on('message', async (message) => {
             .addField('Account Created On:', `${player.user.createdAt}`)
             .setThumbnail(iicon)
             .setTimestamp();
-	message.channel.send(userEmbed)
+	 message.channel.send(userEmbed);
 	}
 
 	if (message.content.startsWith(`${prefix}info`)) {
@@ -106,7 +106,7 @@ client.on('message', async (message) => {
     .addField("Users", client.users.size, true)
     .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png") 
     .setTimestamp();
-    message.channel.send(botembed);
+  message.channel.send(botembed);
   }
 
 	
@@ -129,7 +129,7 @@ client.on('message', async (message) => {
     .addField('Guild Owner', message.guild.owner, true)
     .setThumbnail(sicon) 
     .setTimestamp();
-    message.channel.send(serverembed);
+  message.channel.send(serverembed);
 	}
   });
 	
