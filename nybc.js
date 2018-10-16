@@ -20,6 +20,7 @@ for (x = 0; x < profanities.length; x++) {
  if (message.content.toUpperCase() == profanities[x].toUpperCase()) {
  message.delete();
  return message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned! Read the rules again please. 😤`)
+if (message.author.bot) return;
  return; 
 }
 } 
