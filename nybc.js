@@ -201,7 +201,7 @@ let foundInText = false;
 	   if (message.content.toUpperCase().includes(blacklisted[i].toUpperCase())) foundInText = true;
 	 }
 
-if(!message.author.user.bot) return;
+if(!message.author.user.client) return;
 if (foundInText) {
  message.delete(1);
 message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
