@@ -63,7 +63,7 @@ client.on('guildMemberRemove', (member) => {
       .setTimestamp();
   logging.send(gembed);
 	      });
-
+});
 
 client.on('message', async (message) => {
 	
@@ -207,7 +207,5 @@ let rUser = message.guild.member(message.mentions.users.first() || message.guild
 return message.channel.send("✅ Report sucessfully submitted!")
 	}
 	});
-
-});
 
 client.login(process.env.BOT_TOKEN); 
