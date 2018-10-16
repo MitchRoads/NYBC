@@ -14,6 +14,15 @@ const profanities = require('profanities')
 
 
 client.on("message", async message => {
+	
+	
+for (x = 0; x < profanities.length; x++) {
+ if message.content.toUpperCase() == profanities[x].toUpperCase()) {
+ message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned! Read the rules again please.`)
+ message.delete();
+ return; 
+}
+} 
 
 
  if (message.content.startsWith(`${prefix}avatar`)) { 
@@ -195,21 +204,7 @@ let rUser = message.guild.member(message.mentions.users.first() || message.guild
 return message.channel.send("✅ Report sucessfully submitted!")
 	}
 	});
-	
-client.on('message', async (message) => {
-let blacklisted = ['fuck', 'Fuck', 'fucking', 'Fucking', 'shit', 'Shit', 'asshole', 'Asshole', 'damn', 'Damn', 'motherfucker', 'Motherfucker', 'nigger', 'Nigger', 'faggot', 'Faggot', 'bitch', 'Bitch'];
-let foundInText = false;
- for (var i in blacklisted) {
-  if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
-  if (message.author.client) return;
-	 }
 
-if (foundInText) {
-message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned. Please don't use it again. 😤`)
-message.delete();
-return;
-}
-});
 });
 
 client.login(process.env.BOT_TOKEN); 
