@@ -124,7 +124,7 @@ if (message.content.startsWith(`${prefix}serverinfo`)) {
     .setThumbnail(bicon)
     .addField("Bot Name", client.user.username, true)
     .addField("Bot Tag", client.user.tag, true)
-    .addField("Last Update", moment.duration(client.uptime).format('d[d ]h[h ]m[m ]s[s]'), "ago", true)
+    .addField("Last Update", `${moment.duration(client.uptime).format('d[d ]h[h ]m[m ]s[s]')} age`, true)
     .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
     .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png")
     .setTimestamp();
