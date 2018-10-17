@@ -4,6 +4,8 @@ const client = new Discord.Client();
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 const profanities = require('profanities')
+const moment = require('moment');
+require('moment-duration-format');
 
   client.on("ready", async () => {
   console.log(`${client.user.username} has rode into the online!`);
@@ -122,6 +124,7 @@ if (message.content.startsWith(`${prefix}serverinfo`)) {
     .setThumbnail(bicon)
     .addField("Bot Name", client.user.username, true)
     .addField("Bot Tag", client.user.tag, true)
+    .addField("Last Update Was", moment.duration(client.uptime).format('d[d ]h[h ]m[m ]s[s]'), true)
     .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
     .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png")
     .setTimestamp();
