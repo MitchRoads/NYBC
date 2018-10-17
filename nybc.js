@@ -129,7 +129,7 @@ if (message.content.startsWith(`${prefix}serverinfo`)) {
     let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setTitle("Bot Information")
-    .setDescription("Information on WeatherDawn:")
+    .setDescription(`Information on ${client.user.username}`)
     .setColor(0x374f6b)
     .setThumbnail(bicon)
     .addField("Bot Name", client.user.username, true)
