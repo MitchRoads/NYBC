@@ -122,7 +122,6 @@ if (message.content.startsWith(`${prefix}serverinfo`)) {
     .setThumbnail(bicon)
     .addField("Bot Name", client.user.username, true)
     .addField("Bot Tag", client.user.tag, true)
-    .addField("Server Users", client.users.size, true)
     .addField("Date Of Creation", client.user.createdAt.toLocaleString(), true)
     .setFooter("Created By @Dawn.Bots.INC", "https://i.imgur.com/MAB3T3R.png")
     .setTimestamp();
