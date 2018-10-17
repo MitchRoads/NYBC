@@ -37,6 +37,16 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     .setColor("#2B547E");
     return message.channel.send(avatarEmbed);
 }
+	
+	      if (message.content.startsWith(`${prefix}commands`)) {
+  let helpEmbed = new Discord.RichEmbed()
+.setTitle("NYBC Commands 🚲")
+.setDescription("Down below are the commands for this bot.")
+.setColor("#2B547E") 
+.addField("Commands", "avatar, botinfo, serverinfo, report.")
+message.channel.send(helpEmbed);
+
+}
 
 
 client.on('guildMemberAdd', (member) => {
