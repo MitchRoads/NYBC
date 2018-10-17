@@ -105,7 +105,7 @@ if (message.content.startsWith(`${prefix}serverinfo`)) {
     .addField('Guild Channel Total', message.guild.channels.size, true)
     .addField('Guild Member Total', message.guild.memberCount, true)
     .addField('Guild Role Total', message.guild.roles.size, true)
-    .addField('Guild Region', message.guild.region, true)
+    .addField('National Range', "US-West/East", true)
     .addField('Date Of Server Creation', message.guild.createdAt.toLocaleDateString(), true)
     .addField('Guild Owner', message.guild.owner, true)
     .setFooter(`${server}`, sicon)
