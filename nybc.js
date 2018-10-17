@@ -43,7 +43,7 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
 .setTitle("NYBC Commands 🚲")
 .setDescription("Down below are the commands for this bot.")
 .setColor("#2B547E") 
-.addField("Commands", "avatar, botinfo, serverinfo, report.")
+.addField("Commands", "avatar, botinfo, serverinfo, report, userinfo.")
 message.channel.send(helpEmbed);
 
 }
