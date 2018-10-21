@@ -49,33 +49,6 @@ message.channel.send(helpEmbed);
 
 }
 
-
-client.on('guildMemberAdd', (member) => {
-  let guild = member.guild;
-  let server = member.guild.name;
-  let role = message.guild.roles.find(r => r.name === "Awaiting Assignment");
-member.addRole(role);
-  let logging = guild.channels.find(c => c.name === 'welcome-leaves');
-  let jembed = new Discord.RichEmbed()
-      .setTitle("User Enterance")
-      .setColor("#2B547E")
-      .setDescription(`Welcome ${member}, to ${server}. You are either someone random or apart of the NYBC (National Youth Bike Council). Either way you are welcomed to stay in this channel until assigned a member or visitor role. To get one of these roles ping the preident or the bot developer.`)
-      .setTimestamp();
-  logging.send(jembed);
-	      });
-
-client.on('guildMemberRemove', (member) => {
-	
-  let guild = member.guild;
-  let server = member.guild.name;
-  let logging = guild.channels.find(c => c.name === 'welcome-leaves');
-  let rembed = new Discord.RichEmbed()
-      .setTitle("User Departure")
-      .setColor("#2B547E")
-      .setDescription(`Not sure why ${member} left but, hopefully they will come back if they left on good terms.`)
-      .setTimestamp();
-  logging.send(rembed);
-	      });
 	
 		if (message.content.startsWith(`${prefix}userinfo`)) {
 
@@ -141,7 +114,60 @@ if (message.content.startsWith(`${prefix}serverinfo`)) {
     .setTimestamp();
     return message.channel.send(botembed);
   }      
+
+	if (message.content.startsWith(`${prefix}report`)) {
+	
+let args = message.content.slice(1).split(" ");
+let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!rUser) return message.channel.send("You haven't selected/mentioned a user who you want to report.");
+  let reason = args.slice(1).join(" ") || "None";
+
+  let reportEmbed = new Discord.RichEmbed()
+  .setDescription("Reports")
+  .setColor("#2B547E")
+  .addField("Reported User", `${rUser} with ID: ${rUser.id}`)
+  .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
+  .addField("Channel", message.channel)
+  .addField("Time", message.createdAt)
+  .addField("Reason", reason)
+  .setTimestamp();
+
+  let reportschannel = message.guild.channels.find(c => c.name === 'admin-logs');
+  if(!reportschannel) return message.channel.send("I can't find logging channel.");
+
+
+  message.delete().catch(O_o=>{});
+  reportschannel.send(reportEmbed);
+return message.channel.send("✅ Report sucessfully submitted!")
+}
 });
+
+client.on('guildMemberAdd', (member) => {
+  let guild = member.guild;
+  let server = member.guild.name;
+  let role = member.guild.roles.find(r => r.name === "Awaiting Assignment");
+member.addRole(role);
+  let logging = guild.channels.find(c => c.name === 'welcome-leaves');
+  let jembed = new Discord.RichEmbed()
+      .setTitle("User Enterance")
+      .setColor("#2B547E")
+      .setDescription(`Welcome ${member}, to ${server}. You are either someone random or apart of the NYBC (National Youth Bike Council). Either way you are welcomed to stay in this channel until assigned a member or visitor role. To get one of these roles ping the preident or the bot developer.`)
+      .setTimestamp();
+  logging.send(jembed);
+	      });
+
+client.on('guildMemberRemove', (member) => {
+	
+  let guild = member.guild;
+  let server = member.guild.name;
+  let logging = guild.channels.find(c => c.name === 'welcome-leaves');
+  let rembed = new Discord.RichEmbed()
+      .setTitle("User Departure")
+      .setColor("#2B547E")
+      .setDescription(`Not sure why ${member} left but, hopefully they will come back if they left on good terms.`)
+      .setTimestamp();
+  logging.send(rembed);
+	      });
 	
 	client.on('messageDelete', async (message) => {
     let logging = message.guild.channels.find(c => c.name === 'admin-logs');
@@ -188,32 +214,5 @@ client.on("channelDelete", async (channel) => {
   logging.send(cembed);
 });
 
-	client.on('message', async (message) => {
-	if (message.content.startsWith(`${prefix}report`)) {
-	
-let args = message.content.slice(1).split(" ");
-let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if(!rUser) return message.channel.send("You haven't selected/mentioned a user who you want to report.");
-  let reason = args.slice(1).join(" ") || "None";
-
-  let reportEmbed = new Discord.RichEmbed()
-  .setDescription("Reports")
-  .setColor("#2B547E")
-  .addField("Reported User", `${rUser} with ID: ${rUser.id}`)
-  .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
-  .addField("Channel", message.channel)
-  .addField("Time", message.createdAt)
-  .addField("Reason", reason)
-  .setTimestamp();
-
-  let reportschannel = message.guild.channels.find(c => c.name === 'admin-logs');
-  if(!reportschannel) return message.channel.send("I can't find logging channel.");
-
-
-  message.delete().catch(O_o=>{});
-  reportschannel.send(reportEmbed);
-return message.channel.send("✅ Report sucessfully submitted!")
-	}
-	});
 
 client.login(process.env.BOT_TOKEN); 
