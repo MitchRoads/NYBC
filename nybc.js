@@ -25,7 +25,7 @@ let foundInText = false;
 
 
 if (foundInText) {
- message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned! Read the rules again please. 😤`).then(message => {message.delete(5000)})
+ message.channel.send(`Profanity and slurs aren't allowed on this server, the word you used is banned! Read the rules again please. 😤`).then(message => {message.delete(5000)})
 message.delete();
 }
 
