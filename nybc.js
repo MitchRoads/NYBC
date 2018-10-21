@@ -17,16 +17,17 @@ require('moment-duration-format');
 
 client.on("message", async message => {
 	
-	
-for (x = 0; x < profanities.length; x++) {
- if (message.content.toUpperCase() == profanities[x].toUpperCase()) {
- message.delete();
- return message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned! Read the rules again please. 😤`)
-if (message.author.bot) return;
- return; 
+	const blacklisted = ['Nigga', 'Nigger', 'Tranny', 'Cunt', 'Cumdump', 'Cum Dumpster', 'Bitch', 'Feminazi', 'Retarded', 'Whore', 'Slut', 'Hoe', 'Ghetto', 'Ratchet', 'Cracker', 'Beaner', 'Faggot', 'Fuck', 'Shit', 'Damn', 'Bitch',];
+let foundInText = false;
+ for (var i in blacklisted) {
+  if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
 }
-} 
 
+
+if (foundInText) {
+ message.channel.send(`Profanity isn't allowed on thie server, the word you used is banned! Read the rules again please. 😤`).then(message => {message.delete(5000)})
+message.delete();
+}
 
  if (message.content.startsWith(`${prefix}avatar`)) { 
 	   let user = message.mentions.users.first(); 
