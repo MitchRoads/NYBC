@@ -17,7 +17,7 @@ require('moment-duration-format');
 
 client.on("message", async message => {
 	
-	const blacklisted = ['Nigga', 'Nigger', 'Tranny', 'Cunt', 'Cumdump', 'Cum Dumpster', 'Bitch', 'Feminazi', 'Retarded', 'Whore', 'Slut', 'Hoe', 'Ghetto', 'Ratchet', 'Cracker', 'Beaner', 'Faggot', 'Fuck', 'Shit', 'Damn', 'Bitch',];
+	const blacklisted = ['Nigga', 'Nigger', 'Tranny', 'Cunt', 'Cumdump', 'Cum Dumpster', 'Bitch', 'Feminazi', 'Retarded', 'Whore', 'Slut', 'Hoe', 'Ghetto', 'Ratchet', 'Cracker', 'Beaner', 'Faggot', 'Fuck', 'Shit', 'Damn', 'Bitch', 'Shitting', 'Fucking', 'Bitching', 'Goddamnit',];
 let foundInText = false;
  for (var i in blacklisted) {
   if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
