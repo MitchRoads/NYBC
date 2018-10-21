@@ -51,17 +51,16 @@ message.channel.send(helpEmbed);
 
 
 client.on('guildMemberAdd', (member) => {
-	
   let guild = member.guild;
   let server = member.guild.name;
 member.addRole(`500510515680903188`);
   let logging = guild.channels.find(c => c.name === 'welcome-leaves');
-  let gembed = new Discord.RichEmbed()
+  let jembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
       .setColor("#2B547E")
       .setDescription(`Welcome ${member}, to ${server}. You are either someone random or apart of the NYBC (National Youth Bike Council). Either way you are welcomed to stay in this channel until assigned a member or visitor role. To get one of these roles ping the preident or the bot developer.`)
       .setTimestamp();
-  logging.send(gembed);
+  logging.send(jembed);
 	      });
 
 client.on('guildMemberRemove', (member) => {
@@ -69,12 +68,12 @@ client.on('guildMemberRemove', (member) => {
   let guild = member.guild;
   let server = member.guild.name;
   let logging = guild.channels.find(c => c.name === 'welcome-leaves');
-  let gembed = new Discord.RichEmbed()
+  let rembed = new Discord.RichEmbed()
       .setTitle("User Departure")
       .setColor("#2B547E")
-      .setDescription(`Not sure why {member} left but, hopefully they will come back if they left on good terms.`)
+      .setDescription(`Not sure why ${member} left but, hopefully they will come back if they left on good terms.`)
       .setTimestamp();
-  logging.send(gembed);
+  logging.send(rembed);
 	      });
 	
 		if (message.content.startsWith(`${prefix}userinfo`)) {
