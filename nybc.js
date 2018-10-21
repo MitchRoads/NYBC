@@ -151,7 +151,7 @@ member.addRole(role);
   let jembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
       .setColor("#2B547E")
-      .setDescription(`Welcome ${member}, to ${server}. You are either someone random or apart of the NYBC (National Youth Bike Council). Either way you are welcomed to stay in this channel until assigned a member or visitor role. To get one of these roles ping the preident or the bot developer.`)
+      .setDescription(`Welcome ${member}, to ${server}. You are either someone random or apart of the NYBC (National Youth Bike Council). Either way you are welcomed to stay in this channel until assigned a member or visitor role. To get one of these roles ping the header or the bot developer after reading <#503675095328227344>. Thank you and have a wonderful stay.`)
       .setTimestamp();
   logging.send(jembed);
 	      });
