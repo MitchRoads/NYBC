@@ -53,7 +53,8 @@ message.channel.send(helpEmbed);
 client.on('guildMemberAdd', (member) => {
   let guild = member.guild;
   let server = member.guild.name;
-member.addRole(`500510515680903188`);
+  let addingrole = message.guild.roles.find(r => r.name === "Awaiting Assignment");
+member.addRole(`${addingrole}`);
   let logging = guild.channels.find(c => c.name === 'welcome-leaves');
   let jembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
