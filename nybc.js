@@ -26,6 +26,7 @@ let foundInText = false;
 
 if (foundInText) {
 	   if(message.member.hasPermission("MANAGE_MESSAGES")) 
+		   return message.channel.send("Even though your an admin, try not to curse alright?")
 	 if(!message.member.hasPermission("MANAGE_MESSAGES"))    
 return message.channel.send(`Profanity and slurs aren't allowed on this server, the word you used is banned! Read the rules again please. 😤`).then(message => {message.delete(5000)})
 message.delete();
