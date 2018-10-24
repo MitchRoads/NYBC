@@ -58,7 +58,7 @@ message.delete();
 .setDescription("Down below are the commands for this bot.")
 .setColor("#2B547E") 
 .addField("Commands:", "avatar, botinfo, serverinfo, report, userinfo, helpful.")
-.addField("Prefix/Command Trigger", `n!, example: )userinfo @Job`)
+.addField("Prefix/Command Trigger", `n!, example: n!userinfo @Job`)
 message.channel.send(helpEmbed);
 
 }
