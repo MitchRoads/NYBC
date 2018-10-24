@@ -11,7 +11,7 @@ require('moment-duration-format');
   console.log(`${client.user.username} has rode into the online!`);
   client.user.setActivity("National Bike Warfare", {type: "WATCHING"});
 
-let actvNum = 0;
+let activNum = 0;
 
 setInterval(function() {
  if (activNum === 0) {
