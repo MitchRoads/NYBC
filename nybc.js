@@ -99,7 +99,7 @@ setTimeout(function(){
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E")
   .setDescription(`${botmessage}`)
-  message.channel.send(testembed)
+return message.channel.send(testembed)
 }, ms(remindtime));
 }
 	
