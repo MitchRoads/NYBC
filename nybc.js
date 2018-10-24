@@ -15,8 +15,8 @@ require('moment-duration-format');
 
 
 
-client.on("message", async message => {
-	
+client.on("message", async (message, member) => {
+  if (message.author.bot) return;	
 	const blacklisted = ['Nigga', 'Nigger', 'Tranny', 'Cunt', 'Cumdump', 'Cum Dumpster', 'Bitch', 'Feminazi', 'Retarded', 'Whore', 'Slut', 'Hoe', 'Ghetto', 'Ratchet', 'Cracker', 'Beaner', 'Faggot', 'Fuck', 'Shit', 'Damn', 'Bitch', 'Shitting', 'Fucking', 'Bitching', 'Goddamnit',];
 let foundInText = false;
  for (var i in blacklisted) {
@@ -25,11 +25,13 @@ let foundInText = false;
 
 
 if (foundInText) {
-message.channel.send(`Profanity and slurs aren't allowed on this server, the word you used is banned! Read the rules again please. 😤`).then(message => {message.delete(5000)})
+message.channel.send(`${member}, profanity and slurs aren't allowed on this server, the word you used is banned! Read the rules again please. 😤`).then(message => {message.delete(10000)})
 message.delete();
 }
+});
 
- if (message.content.startsWith(`${prefix}avatar`)) { 
+client.on("message", async (message) => {
+ if (message.content.toLowerCase().startsWith(`${prefix}avatar`)) { 
 	   let user = message.mentions.users.first(); 
 if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see."); 
     let avatarEmbed = new Discord.RichEmbed()
@@ -39,18 +41,28 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     return message.channel.send(avatarEmbed);
 }
 	
-	      if (message.content.startsWith(`${prefix}commands`)) {
+	      if (message.content.toLowerCase().startsWith(`${prefix}commands`)) {
   let helpEmbed = new Discord.RichEmbed()
 .setTitle("NYBC Commands 🚲")
 .setDescription("Down below are the commands for this bot.")
 .setColor("#2B547E") 
-.addField("Commands", "avatar, botinfo, serverinfo, report, userinfo.")
+.addField("Commands:", "avatar, botinfo, serverinfo, report, userinfo, helpful.")
+.addField("Prefix/Command Trigger" "), example: )userinfo @Job")
 message.channel.send(helpEmbed);
 
 }
-
 	
-		if (message.content.startsWith(`${prefix}userinfo`)) {
+ if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
+  let tempEmbed = new Discord.RichEmbed()
+.setTitle("Help Me!!!")
+.setDescription("If you need some help with how to use discord, use this command.")
+.setColor("#2B547E") 
+.addField("If you want to know more on how you can use discord", "https://www.youtube.com/watch?v=LDVqruRsYtA")
+.addField("This is a decent video to start off beginners of discord (on mobile)", "https://www.youtube.com/watch?v=z6AKEpTgHew")
+message.channel.send(tempEmbed);
+		      }
+	
+		if (message.content.toLowerCase().startsWith(`${prefix}userinfo`)) {
 
             let player = message.mentions.members.first() || message.member
             let iicon = player.user.displayAvatarURL;
@@ -77,7 +89,7 @@ message.channel.send(helpEmbed);
 	}
 	
 	
-if (message.content.startsWith(`${prefix}serverinfo`)) {		
+if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {		
     let sicon = message.guild.iconURL;
     let server = message.guild.name;
     let serverembed = new Discord.RichEmbed()
@@ -98,7 +110,7 @@ if (message.content.startsWith(`${prefix}serverinfo`)) {
     return message.channel.send(serverembed);
   }
   
-   if (message.content.startsWith(`${prefix}botinfo`)) {
+   if (message.content.toLowerCase().startsWith(`${prefix}botinfo`)) {
 
     let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
@@ -115,7 +127,7 @@ if (message.content.startsWith(`${prefix}serverinfo`)) {
     return message.channel.send(botembed);
   }      
 
-	if (message.content.startsWith(`${prefix}report`)) {
+	if (message.content.toLowerCase().startsWith(`${prefix}report`)) {
 	
 let args = message.content.slice(1).split(" ");
 let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -170,6 +182,7 @@ client.on('guildMemberRemove', (member) => {
 	      });
 	
 	client.on('messageDelete', async (message) => {
+		  if (message.author.bot) return;
     let logging = message.guild.channels.find(c => c.name === 'admin-logs');
     const dembed = new Discord.RichEmbed()
         .setTitle("Message Deleted")
