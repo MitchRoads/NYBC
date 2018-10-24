@@ -48,6 +48,7 @@ return message.channel.send("You don't have the permission to manage messages, y
 if (args[0] > 100) return message.channel.send(`I can only delete 1 to 100 messages at a time.`);
 message.channel.bulkDelete(args[0]).then(() => {
 message.channel.send(`Successfully cleared **${args[0]} message(s).**`).then(message => message.delete(5000));
+message.delete();
 });
 }
 	
