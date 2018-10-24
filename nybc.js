@@ -142,6 +142,7 @@ if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {
     let test = message.guild.channels.find(c => c.name === 'test');
         var interval = setInterval (function () {
             test.send("Test123")
+	.catch(console.error);
         }, 1 * 1000); 
     }
 	if (message.content.toLowerCase().startsWith(`${prefix}report`)) {
