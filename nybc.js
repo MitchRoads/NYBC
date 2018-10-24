@@ -5,6 +5,7 @@ const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 const profanities = require('profanities')
 const moment = require('moment');
+const ms = require("ms");
 require('moment-duration-format');
 
   client.on("ready", async () => {
@@ -85,6 +86,21 @@ message.delete();
 .addField("Prefix/Command Trigger", `n!, example: n!userinfo @Job`)
 message.channel.send(helpEmbed);
 
+}
+	
+	if (message.content.toLowerCase().startsWith(`${prefix}remind`)) {	
+if(!message.member.hasPermission("MANAGE_MESSAGES"))
+return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
+let args = message.content.split(/ +/g).slice(1)
+let botmessage = args.join(' ')
+let remindtime = args[0];	
+if(!remindtime) return message.channel.send("You didn't put a time!");
+setTimeout(function(){
+  let testembed = new Discord.RichEmbed()
+  .setColor("#2B547E")
+  .setDescription(`${botmessage}$`)
+  message.channel.send(testembed)
+}, ms(remindtime));
 }
 	
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
