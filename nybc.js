@@ -40,6 +40,16 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     .setColor("#2B547E");
     return message.channel.send(avatarEmbed);
 }
+			if (message.content.toLowerCase().startsWith(`${prefix}clear`)) {
+	if(!message.member.hasPermission("MANAGE_MESSAGES"))
+return message.channel.send("You don't have the permission to manage messages, you will not be able to do this command.");
+		let args = message.content.split(/ +/g).slice(1)
+	if (isNaN(args[0])) return message.channel.send(`How many messages do you want deleted?`);
+if (args[0] > 100) return message.channel.send(`I can only delete 1 to 100 messages at a time.`);
+message.channel.bulkDelete(args[0]).then(() => {
+message.channel.send(`Successfully cleared **${args[0]} message(s).**`).then(message => message.delete(5000));
+});
+}
 	
 	      if (message.content.toLowerCase().startsWith(`${prefix}commands`)) {
   let helpEmbed = new Discord.RichEmbed()
@@ -47,7 +57,7 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
 .setDescription("Down below are the commands for this bot.")
 .setColor("#2B547E") 
 .addField("Commands:", "avatar, botinfo, serverinfo, report, userinfo, helpful.")
-.addField("Prefix/Command Trigger", `), example: )userinfo @Job`)
+.addField("Prefix/Command Trigger", `n!, example: )userinfo @Job`)
 message.channel.send(helpEmbed);
 
 }
