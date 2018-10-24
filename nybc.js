@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const superagent = require("snekfetch");
 const client = new Discord.Client();
+const presenceTimer = new require('presence-timer').Timer(client);
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 const profanities = require('profanities')
@@ -123,7 +124,7 @@ if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {
   }
   
    if (message.content.toLowerCase().startsWith(`${prefix}botinfo`)) {
-
+   presenceTimer.startTimer(3000, 6000)
     let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setTitle("Bot Information")
@@ -142,7 +143,6 @@ if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {
     let test = message.guild.channels.find(c => c.name === 'test');
         var interval = setInterval (function () {
             test.send("Test123")
-	.catch(console.error);
         }, 1 * 1000); 
     }
 	if (message.content.toLowerCase().startsWith(`${prefix}report`)) {
