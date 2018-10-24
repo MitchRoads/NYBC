@@ -67,7 +67,7 @@ message.channel.send(helpEmbed);
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
   let tepEmbed = new Discord.RichEmbed()
 .setTitle("Help Me!!!")
-.setDescription("If you need some help with how to use discord, use this command.")
+.setDescription("If you need some help with how to use discord, use this channel.")
 .setColor("#2B547E") 
 .addField("If you want to know more on how you can use discord", "https://www.youtube.com/watch?v=LDVqruRsYtA")
 .addField("This is a decent video to start off beginners of discord (on mobile)", "https://www.youtube.com/watch?v=z6AKEpTgHew")
