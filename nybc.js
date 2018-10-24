@@ -138,9 +138,10 @@ if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {
     .setTimestamp();
     return message.channel.send(botembed);
   }      
-	if (message.content === "$loop") { 
+	if (message.content === "$loop") {
+    let test = message.guild.channels.find(c => c.name === 'test');
         var interval = setInterval (function () {
-            message.channel.send("Test123")
+            test.send("Test123")
         }, 1 * 1000); 
     }
 	if (message.content.toLowerCase().startsWith(`${prefix}report`)) {
