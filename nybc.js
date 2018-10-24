@@ -18,11 +18,24 @@ setInterval(function() {
   client.user.setActivity("National Bike Warfare", {type: "WATCHING"});
    activNum = 1;
  } else if (activNum === 1) {
-  client.user.setActivity("Bike Rider | n!commamands", {type: "WATCHING"});
+  client.user.setActivity("Bikes | n!commamands", {type: "WATCHING"});
    activNum = 0;
  }
 }, 20 * 1000);  
 });
+
+client.on("message", async (message) => {
+let activNum = 0;
+
+setInterval(function() {
+ if (activNum === 0) {
+  let test = message.guild.channels.find(c => c.name === 'test');
+	 test.send("Test123")
+   activNum = 0;
+ }
+}, 3 * 1000);  
+});
+
 client.on("message", async (message, member) => {
   if (message.author.bot) return;	
 	const blacklisted = ['Nigga', 'Nigger', 'Tranny', 'Cunt', 'Cumdump', 'Cum Dumpster', 'Bitch', 'Feminazi', 'Retarded', 'Whore', 'Slut', 'Hoe', 'Ghetto', 'Ratchet', 'Cracker', 'Beaner', 'Faggot', 'Fuck', 'Shit', 'Damn', 'Bitch', 'Shitting', 'Fucking', 'Bitching', 'Goddamnit',];
