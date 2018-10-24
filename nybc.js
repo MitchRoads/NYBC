@@ -41,6 +41,7 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     return message.channel.send(avatarEmbed);
 }
 			if (message.content.toLowerCase().startsWith(`${prefix}clear`)) {
+				  if (message.author.bot) return;	
 	if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permission to manage messages, you will not be able to do this command.");
 		let args = message.content.split(/ +/g).slice(1)
