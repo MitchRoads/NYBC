@@ -31,7 +31,7 @@ let activNum = 0;
 var interval = setInterval (function() {
  if (activNum === 0) {
   let test = message.guild.channels.find(c => c.name === 'test');
-	 test.send("Test123")
+	return test.send("Test123")
    activNum = 0;
  }
 }, 3 * 1000);  
