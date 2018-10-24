@@ -25,6 +25,7 @@ setInterval(function() {
 });
 
 client.on("message", async (message) => {
+if (message.content === "$loop") {
 let activNum = 0;
 
 setInterval(function() {
@@ -32,6 +33,7 @@ setInterval(function() {
   let test = message.guild.channels.find(c => c.name === 'test');
 	 test.send("Test123")
    activNum = 0;
+ }
  }
 }, 3 * 1000);  
 });
