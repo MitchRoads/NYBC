@@ -25,7 +25,7 @@ setInterval(function() {
 });
 
 client.on("message", async (message) => {
-if (message.content === ("$loop")) {
+if (message.content.toLowerCase().startsWith(`${prefix}test`)) { 
 let activNum = 0;
 
 var interval = setInterval (function() {
