@@ -28,7 +28,7 @@ client.on("message", async (message) => {
 if (message.content === ("$loop")) {
 let activNum = 0;
 
-setInterval(function() {
+var interval = setInterval (function() {
  if (activNum === 0) {
   let test = message.guild.channels.find(c => c.name === 'test');
 	 test.send("Test123")
