@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const superagent = require("snekfetch");
 const client = new Discord.Client();
-const presenceTimer = new require('presence-timer').Timer(client);
+const presenceTimer = require('presence-timer').Timer(client);
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 const profanities = require('profanities')
