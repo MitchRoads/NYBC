@@ -34,8 +34,8 @@ setInterval(function() {
 	 test.send("Test123")
    activNum = 0;
  }
- }
 }, 3 * 1000);  
+}
 });
 
 client.on("message", async (message, member) => {
