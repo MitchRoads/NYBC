@@ -47,7 +47,7 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
 .setDescription("Down below are the commands for this bot.")
 .setColor("#2B547E") 
 .addField("Commands:", "avatar, botinfo, serverinfo, report, userinfo, helpful.")
-.addField("Prefix/Command Trigger" "), example: )userinfo @Job")
+.addField("Prefix/Command Trigger", `), example: )userinfo @Job`)
 message.channel.send(helpEmbed);
 
 }
