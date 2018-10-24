@@ -25,7 +25,7 @@ setInterval(function() {
 });
 
 client.on("message", async (message) => {
-if (message.content === "$loop") {
+if (message.content === ("$loop")) {
 let activNum = 0;
 
 setInterval(function() {
