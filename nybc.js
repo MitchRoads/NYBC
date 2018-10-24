@@ -138,7 +138,11 @@ if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {
     .setTimestamp();
     return message.channel.send(botembed);
   }      
-
+	if (message.content === "$loop") { 
+        var interval = setInterval (function () {
+            message.channel.send("Test123")
+        }, 1 * 1000); 
+    }
 	if (message.content.toLowerCase().startsWith(`${prefix}report`)) {
 	
 let args = message.content.slice(1).split(" ");
@@ -191,7 +195,7 @@ client.on('guildMemberRemove', (member) => {
       .setDescription(`Not sure why ${member} left but, hopefully they will come back if they left on good terms.`)
       .setTimestamp();
   logging.send(rembed);
-	      });
+	      }); 
 	
 	client.on('messageDelete', async (message) => {
 		  if (message.author.bot) return;
