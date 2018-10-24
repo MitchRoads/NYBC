@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const superagent = require("snekfetch");
 const client = new Discord.Client();
-const presenceTimer = new require('presence-timer').Timer(client);
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 const profanities = require('profanities')
@@ -14,6 +13,17 @@ require('moment-duration-format');
 });
 
 
+client.on("message", async (message, member) => {
+let actvNum = 0;
+
+setInterval(function() {
+ if (activNum === 0) {
+ let test = message.guild.channels.find(c => c.name === 'test');
+test.send("Testing");
+   activNum = 1;
+ }
+}, 3 * 1000);
+ });
 
 
 client.on("message", async (message, member) => {
