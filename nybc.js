@@ -96,12 +96,12 @@ let args = message.content.split(/ +/g).slice(1)
 let remindtime = args[0];
 if(!remindtime) return message.channel.send("You didn't put a time!");
 setTimeout(function(){
-if(message.member.hasPermission("ADD_REACTIONS"))
+let users = message.member.hasPermission("ADD_REACTIONS")
 let botmessage = args.join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E")
   .setDescription(`${botmessage}`)
-message.member.send(testembed)
+users.send(testembed)
 }, ms(remindtime)); 
 }
 	
