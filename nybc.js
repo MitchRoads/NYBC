@@ -104,7 +104,7 @@ let botmessage = args.slice(1).join(" ");
 user.send(testembed);
 message.channel.send("⏲ Timer Over!")
 }, ms(remindtime)); 
-message.channel.send("⏲ Timer has been set!")
+message.channel.send("⏲ Timer has been set!").then(message => message.delete(5000));
 });
 }
 	
