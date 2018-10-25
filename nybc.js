@@ -105,6 +105,7 @@ let botmessage = args.join(" ");
 user.send(testembed)
 }, ms(remindtime)); 
 }
+}
 	
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
   let tepEmbed = new Discord.RichEmbed()
