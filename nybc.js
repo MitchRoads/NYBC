@@ -89,7 +89,7 @@ message.channel.send(helpEmbed);
 }
 	
 	if (message.content.toLowerCase().startsWith(`${prefix}remind`)) {
-		message.channel.guild.members.every(user => {
+		message.channel.guild.members.forEach(user => {
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 let args = message.content.split(/ +/g).slice(1)
@@ -164,7 +164,6 @@ if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {
   }
   
    if (message.content.toLowerCase().startsWith(`${prefix}botinfo`)) {
-   presenceTimer.startTimer(3000, 6000)
     let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setTitle("Bot Information")
@@ -179,12 +178,6 @@ if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {
     .setTimestamp();
     return message.channel.send(botembed);
   }      
-	if (message.content === "$loop") {
-    let test = message.guild.channels.find(c => c.name === 'test');
-        var interval = setInterval (function () {
-            test.send("Test123")
-        }, 1 * 1000); 
-    }
 	if (message.content.toLowerCase().startsWith(`${prefix}report`)) {
 	
 let args = message.content.slice(1).split(" ");
@@ -265,7 +258,8 @@ client.on("messageUpdate", function (oldMessage, newMessage, channel) {
     }
 });
 	
-	client.on("channelCreate", async (channel) => {
+	client.on("channelCreate", async (channel, message) => {
+     if (message.author.bot) return;
   let logging = channel.guild.channels.find(c => c.name === 'admin-logs');
   const cembed = new Discord.RichEmbed()
       .setTitle("Channel Created")
