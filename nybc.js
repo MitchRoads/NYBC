@@ -54,7 +54,7 @@ message.delete();
 }
 });
 
-client.on("message", async (message) => {
+client.on("message", async (message, member) => {
  if (message.content.toLowerCase().startsWith(`${prefix}avatar`)) { 
 	   let user = message.mentions.users.first(); 
 if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see."); 
@@ -98,7 +98,7 @@ let remindtime = args[0];
 if (!remindtime)
 message.channel.send("You didn't put a time!");
 setTimeout(function(){ 
-let timerChannel = message.guild.channels.find(c => c.name === '505110962773295135');
+let timerChannel =  message.guild.channels.find(c => c.name === 'reminders');
 let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
