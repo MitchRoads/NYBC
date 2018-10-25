@@ -92,12 +92,11 @@ message.channel.send(helpEmbed);
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 let args = message.content.split(/ +/g).slice(1)
-let await = `${ms(ms(remindtime))}`
-let botmessage = args.join(' ')
-let remindtime = args[0];	
+let botmessage = args[0];
+let remindtime = args[1];	
 if(!remindtime) return message.channel.send("You didn't put a time!");
 setTimeout(function(){
-  await(remindtime);
+//  await(remindtime);
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E")
   .setDescription(`${botmessage}`)
