@@ -105,7 +105,7 @@ user.send(testembed);
 return message.channel.send("⏲ Timer Sucessfully Set!")
 setTimeout(function(){
 message.channel.send("⏲ Timer Over!")	
-}
+}, ms(remindtime)); 
 }, ms(remindtime)); 
 });
 }
