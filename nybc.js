@@ -88,7 +88,8 @@ message.channel.send(helpEmbed);
 
 }
 	
-	if (message.content.toLowerCase().startsWith(`${prefix}remind`)) {	
+	if (message.content.toLowerCase().startsWith(`${prefix}remind`)) {
+  if (message.channel.type == "dm") return;
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 let args = message.content.split(/ +/g).slice(1)
@@ -100,7 +101,7 @@ let botmessage = args.join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E")
   .setDescription(`${botmessage}`)
-message.channel.send(testembed)
+message.members.send(testembed)
 }, ms(remindtime)); 
 }
 	
