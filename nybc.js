@@ -94,17 +94,16 @@ if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 let args = message.content.split(/ +/g).slice(1)
 let remindtime = args[0];
-try {
 if(!remindtime) return message.channel.send("You didn't put a time!");
- }catch(e){
 setTimeout(function(){
+if(message.member.hasPermission("ADD_REACTIONS"))
+let args = message.content.split(/ +/g).slice(1)
 let botmessage = args.join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E")
   .setDescription(`${botmessage}`)
-message.channel.send(testembed)
+message.member.send(testembed)
 }, ms(remindtime)); 
-}
 }
 	
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
