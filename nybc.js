@@ -94,9 +94,8 @@ if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 let args = message.content.split(/ +/g).slice(1)
 let remindtime = args[0];
-if(!remindtime) return message.channel.send("You didn't put a time!");
 try {
-await (remindtime); 
+if(!remindtime) return message.channel.send("You didn't put a time!");
  }catch(e){
 setTimeout(function(){
 let botmessage = args.join(" ");
