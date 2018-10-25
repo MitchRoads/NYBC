@@ -102,8 +102,9 @@ let botmessage = args.slice(1).join(" ");
   .setColor("#2B547E")
   .setDescription(`${botmessage}`)
 user.send(testembed);
+message.channel.send("⏲ Timer Over!")
 }, ms(remindtime)); 
-return message.channel.send("⏲ Timer Over!")
+message.channel.send("⏲ Timer has been set!")
 });
 }
 	
