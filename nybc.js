@@ -98,12 +98,13 @@ let remindtime = args[0];
 if (!remindtime)
 message.channel.send("You didn't put a time!");
 setTimeout(function(){ 
-let timerchannel = message.guild.channels.find(c => c.name === '505110962773295135');
+let timerChannel = message.guild.channels.find(c => c.name === '505110962773295135');
 let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
-  .setColor("#2B547E")
+  .setColor("#2B547E") 
   .setDescription(`${botmessage}`)
-user.send(testembed).then return timerchannel.send("⏲ Timer Over!");
+user.send(testembed)
+timerChannel.send("⏲ Timer Over!");
 }, ms(remindtime)); 
 
 });
