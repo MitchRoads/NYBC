@@ -98,7 +98,7 @@ if(!remindtime) return message.channel.send("You didn't put a time!");
 setTimeout(function(){
 //let users = message.member.hasPermission("ADD_REACTIONS")
 message.channel.guild.members.forEach(user => {
-let args = message.content.split(/ +/g).slice(2)
+let args = message.content.split(/ +/g).slice(remindtime)
 let botmessage = args.join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E")
