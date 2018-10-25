@@ -104,7 +104,7 @@ let botmessage = args.join(" ");
   .setDescription(`${botmessage}`)
 user.send(testembed)
 }, ms(remindtime)); 
-}
+});
 }
 	
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
