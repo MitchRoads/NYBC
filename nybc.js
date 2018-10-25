@@ -101,7 +101,7 @@ let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E")
   .setDescription(`${botmessage}`)
-user.send(testembed
+user.send(testembed);
 return message.channel.send("⏲ Timer Sucessfully Set!")
 setTimeout(function(){
 message.channel.send("⏲ Timer Over!")	
