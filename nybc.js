@@ -95,9 +95,8 @@ if (!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 let args = message.content.split(/ +/g).slice(1)
 let remindtime = args[0]; 
-if (!remindtime)
-return message.channel.send("You didn't put a time!");
-await(remindtime)		
+if (!remindtime) return message.channel.send("You didn't put a time!");
+await(remindtime);
 setTimeout(function(){ 
 let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
