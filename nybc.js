@@ -89,6 +89,7 @@ message.channel.send(helpEmbed);
 }
 	
 	if (message.content.toLowerCase().startsWith(`${prefix}remind`)) {
+			  if (message.author.bot) return;
 		message.guild.members.forEach(user => {
 if (!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
