@@ -258,8 +258,7 @@ client.on("messageUpdate", function (oldMessage, newMessage, channel) {
     }
 });
 	
-	client.on("channelCreate", async (channel, message) => {
-     if (message.author.bot) return;
+	client.on("channelCreate", async (channel) => {
   let logging = channel.guild.channels.find(c => c.name === 'admin-logs');
   const cembed = new Discord.RichEmbed()
       .setTitle("Channel Created")
