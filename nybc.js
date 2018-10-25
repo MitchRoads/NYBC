@@ -94,14 +94,14 @@ return message.channel.send("You don't have the permissions to manage messages, 
 let args = message.content.split(/ +/g).slice(1)
 let botmessage = args.join(" ");
 let remindtime = args[0];	
-if(!remindtime) return message.channel.send("You didn't put a time!");
 await(remindtime);
 setTimeout(function(){
+if(!remindtime) return message.channel.send("You didn't put a time!");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E")
   .setDescription(`${botmessage}`)
 return message.channel.send(testembed)
-}, ms(remindtime));
+}, ms(remindtime)); 
 }
 	
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
