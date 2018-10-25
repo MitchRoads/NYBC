@@ -102,8 +102,7 @@ let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E")
   .setDescription(`${botmessage}`)
-user.send(testembed);
-message.channel.send("⏲ Timer Over!") - 4
+user.send(testembed).then(message => message.channel.send("⏲ Timer Over!");
 }, ms(remindtime)); 
 });
 }
