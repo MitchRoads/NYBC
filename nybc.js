@@ -119,15 +119,16 @@ if (!remindtime)
 message.channel.send("You didn't put a time!");
 setTimeout(function(){ 
 //let timerChannel =  message.guild.channels.find(c => c.name === 'reminders');
-let botmessage = args.slice(1).join(" ");
- let user = message.mentions.users.first();
+let botmessage = args.slice(1).join(" "); 
+let user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+if(!user) return message.channel.send("You haven't selected/mentioned a user to remind");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`${botmessage}`)
   user.send(testembed)
 //timerChannel.send("⏲ Timer Over!");
 }, ms(remindtime)); 
-});
+}
 
 	
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
