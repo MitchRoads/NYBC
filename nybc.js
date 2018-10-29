@@ -105,7 +105,7 @@ let botmessage = args.slice(1).join(" ");
 timerChannel.send(testembed);
 }, ms(remindtime)); 
 }
-		if (message.content.toLowerCase().startsWith(`${prefix}DMremind`)) {
+		if (message.content.toLowerCase().startsWith(`${prefix}directremind`)) {
 			  if (message.author.bot) return;
 if (!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
