@@ -120,8 +120,8 @@ let timerChannel =  message.guild.channels.find(c => c.name === 'reminders');
 let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
-  .setDescription(`${botmessage}`)
-usertest.send(mentioned, testembed);
+  .setDescription(`${botmessage} - ${mentioned}`)
+usertest.send(testembed);
 }, ms(remindtime)); 
 }
 
