@@ -105,6 +105,26 @@ let botmessage = args.slice(1).join(" ");
 timerChannel.send(testembed);
 }, ms(remindtime)); 
 }
+		if (message.content.toLowerCase().startsWith(`${prefix}remindtest`)) {
+			  if (message.author.bot) return;
+if (!message.member.hasPermission("MANAGE_MESSAGES"))
+return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
+let args = message.content.split(/ +/g).slice(1)
+let usertest = message.mentions.users.first()  
+let mentioned = message.content.slice(8);
+let remindtime = args[0]; 
+if (!remindtime)
+message.channel.send("You didn't put a time!");
+setTimeout(function(){ 
+let timerChannel =  message.guild.channels.find(c => c.name === 'reminders');
+let botmessage = args.slice(1).join(" ");
+  let testembed = new Discord.RichEmbed()
+  .setColor("#2B547E") 
+  .setDescription(`${botmessage}`)
+timerChannel.send(testembed).then(usertest => usertest.send(mentioned));
+//usertest.send(mentioned);
+}, ms(remindtime)); 
+}
 
 	
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
