@@ -121,8 +121,7 @@ let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`${botmessage}`)
-timerChannel.send(testembed).then(usertest => usertest.send(mentioned));
-//usertest.send(mentioned);
+usertest.send(mentioned, testembed);
 }, ms(remindtime)); 
 }
 
