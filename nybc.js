@@ -115,12 +115,12 @@ let usertest = message.mentions.users.first()
 let remindtime = args[0]; 
 if (!remindtime) return message.channel.send("You didn't put a time!");
 setTimeout(function(){ 
-let mentioned = args.slice(1).join(" ");
+let mentioned = args.slice(8).join(" ");
 let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`${botmessage} - ${mentioned}`)
-usertest.send(testembed);
+usertest.send(testembed).then(message => message.channel.send(`✉ Timer is done <@${message.author.id}>, they have recived the DM.`);
 }, ms(remindtime)); 
 }
 
