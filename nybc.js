@@ -118,7 +118,7 @@ let remindtime = args[0];
 if (!remindtime) return message.channel.send("You didn't put a time!");
 let tuser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 if(!tuser) return message.channel.send("You haven't selected/mentioned a user to remind");
-
+await(tuser);
 setTimeout(function(){ 
 //let timerChannel =  message.guild.channels.find(c => c.name === 'reminders');
 let botmessage = args.slice(1).join(" "); 
