@@ -105,7 +105,6 @@ let botmessage = args.slice(1).join(" ");
 timerChannel.send(testembed);
 }, ms(remindtime)); 
 });
-}
 
 	
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
