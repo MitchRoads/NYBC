@@ -109,6 +109,28 @@ let botmessage = args.slice(1).join(" ");
 });
 }
 	
+		if (message.content.toLowerCase().startsWith(`${prefix}remind`)) {
+			  if (message.author.bot) return;
+		message.guild.members.forEach(user => {
+if (!message.member.hasPermission("MANAGE_MESSAGES"))
+return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
+let args = message.content.split(/ +/g).slice(1)
+let remindtime = args[0]; 
+if (!remindtime)
+message.channel.send("You didn't put a time!");
+setTimeout(function(){ 
+//let timerChannel =  message.guild.channels.find(c => c.name === 'reminders');
+let botmessage = args.slice(1).join(" ");
+ let user = message.mentions.users.first();
+  let testembed = new Discord.RichEmbed()
+  .setColor("#2B547E") 
+  .setDescription(`${botmessage}`)
+  user.send(testembed)
+//timerChannel.send("⏲ Timer Over!");
+}, ms(remindtime)); 
+});
+}
+	
  if (message.content.toLowerCase().startsWith(`${prefix}helpful`)) {
   let tepEmbed = new Discord.RichEmbed()
 .setTitle("Help Me!!!")
