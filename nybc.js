@@ -116,10 +116,10 @@ let remindtime = args[1];
 if (!remindtime) return message.channel.send("You didn't put a time!");
 let usertest = message.mentions.users.first();
 if (!usertest) return message.channel.send("You didn't mention anyone you want to DM a reminder.") 
-let membertime = message.author;
 //let mentioned = args.slice(25).join(" ");
-let botmessage = args.slice(1).join(" ");
 setTimeout(function(){ 
+let membertime = message.author;
+let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`${botmessage}`)
