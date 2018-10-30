@@ -123,7 +123,7 @@ setTimeout(function(){
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`${botmessage}`)
-usertest.send(testembed).then(message => time.send(`✉ Timer is done ${membertime}, they have received the DM.`)
+usertest.send(testembed).then(message => time.send(`✉ Timer is done ${membertime}, they have received the DM.`))
 }, ms(remindtime));  
 }
 
