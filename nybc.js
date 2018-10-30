@@ -120,8 +120,8 @@ let mentioned = args.slice(20).join(" ");
 let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
-  .setDescription(`${botmessage} ${mentioned}`)
-usertest.send(testembed).then(message => time.send(`✉ Timer is done ${message.author.id}, they have recived the DM.`));
+  .setDescription(`${botmessage}${mentioned}`)
+usertest.send(testembed).then(time => time.send(`✉ Timer is done ${message.author.id}, they have recived the DM.`));
 }, ms(remindtime)); 
 }
 
