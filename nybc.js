@@ -116,7 +116,6 @@ if (!remindtime) return message.channel.send("You didn't put a time!");
 let usertest = message.mentions.users.first();
 if (!usertest) return message.channel.send("You didn't mention anyone you want to DM a reminder.") 
 setTimeout(function(){ 
-let time =  message.guild.channels.find(c => c.name === '504743315741081600');
 let membertime = message.author;
 let mentioned = args.slice(25).join(" ");
 let botmessage = args.slice(1).join(" ");
@@ -124,6 +123,7 @@ let botmessage = args.slice(1).join(" ");
   .setColor("#2B547E") 
   .setDescription(`${botmessage}${mentioned}`)
 usertest.send(testembed)
+let time =  message.guild.channels.find(c => c.name === '504743315741081600');
   let timerembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`✉ Timer is done ${membertime}, they have received the DM.`)
