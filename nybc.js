@@ -94,14 +94,14 @@ message.channel.send(helpEmbed);
 .setDescription("Down below are the rules of the server, please respect and follow them. Thank you:")
 .setColor("#2B547E") 
 .setImage("https://image.ibb.co/gpXksf/rule.png")
-.addField("◽ Rule 1:", "No swearing, especially in forms of denouncement to anyone else.")
-.addField("◽ Rule 2:", "Try to respond to @youruser as soon as you can; after joining the chats.")
-.addField("◽ Rule 3:", "Respect other’s opinions; be mindful.")
-.addField("◽ Rule 4:", "Don’t be afraid to retype your thought if you think it will  come across as incompetent or disrespectful.")
-.addField("◽ Rule 5:", "Don't forget to check your e mail frequently.")
-.addField("◽ Rule 6:", "Use your leadership skills here.")
-.addField("◽ Remember:", "You’re very much appreciated, don’t forget that.")
-.setFooter(`Rules written by <@324708944507568130>.`, message.guild.iconURL)
+.addField("▫ Rule 1:", "No swearing, especially in forms of denouncement to anyone else.")
+.addField("▫ Rule 2:", "Try to respond to @youruser as soon as you can; after joining the chats.")
+.addField("▫ Rule 3:", "Respect other’s opinions; be mindful.")
+.addField("▫ Rule 4:", "Don’t be afraid to retype your thought if you think it will  come across as incompetent or disrespectful.")
+.addField("▫ Rule 5:", "Don't forget to check your e mail frequently.")
+.addField("▫ Rule 6:", "Use your leadership skills here.")
+.addField("Remember:", "You’re very much appreciated, don’t forget that.")
+.setFooter('Rules written by <@324708944507568130>.', message.guild.iconURL)
 .setTimestamp();
 message.channel.send(ruleEmbed);
 
