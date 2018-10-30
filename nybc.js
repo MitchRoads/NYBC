@@ -118,13 +118,16 @@ if (!usertest) return message.channel.send("You didn't mention anyone you want t
 setTimeout(function(){ 
 let time =  message.guild.channels.find(c => c.name === '504743315741081600');
 let membertime = message.author;
-let mentioned = args.slice(20).join(" ");
+let mentioned = args.slice(25).join(" ");
 let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`${botmessage}${mentioned}`)
 usertest.send(testembed)
-time.send(`✉ Timer is done ${membertime}, they have received the DM.`);
+  let timerembed = new Discord.RichEmbed()
+  .setColor("#2B547E") 
+  .setDescription(`✉ Timer is done ${membertime}, they have received the DM.`)
+time.send(timerembed)
 }, ms(remindtime));  
 }
 
