@@ -112,7 +112,7 @@ return message.channel.send("You don't have the permissions to manage messages, 
 let args = message.content.split(/ +/g).slice(1)
 let time =  message.guild.channels.find(c => c.name === 'reminder-logs');
 //let mentioned = message.content.slice(8);
-let remindtime = args[1];  
+let remindtime = args[0];  
 if (!remindtime) return message.channel.send("You didn't put a time!");
 let usertest = message.mentions.users.first();
 if (!usertest) return message.channel.send("You didn't mention anyone you want to DM a reminder.") 
