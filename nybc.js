@@ -92,7 +92,7 @@ message.channel.send(helpEmbed);
   let ruleEmbed = new Discord.RichEmbed()
 .setTitle("NYBC CLUB RULES")
 .setDescription("Down below are the rules of the server, please respect and follow them. Thank you:")
-.setColor("#2B547E") 
+.setColor(0x2B547E) 
 .setImage("https://image.ibb.co/gpXksf/rule.png")
 .addField("▫ Rule 1:", "No swearing, especially in forms of denouncement to anyone else.")
 .addField("▫ Rule 2:", "Try to respond to @youruser as soon as you can; after joining the chats.")
