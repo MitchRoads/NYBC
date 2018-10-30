@@ -109,20 +109,23 @@ timerChannel.send(testembed);
 			  if (message.author.bot) return;
 if (!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
-let args = message.content.split(/ +/g).slice(1)
-let usertest = message.mentions.users.first()  
+let args = message.content.split(/ +/g).slice(1) 
 //let mentioned = message.content.slice(8);
 let remindtime = args[0]; 
 if (!remindtime) return message.channel.send("You didn't put a time!");
+let usertest = message.mentions.users.first();
+if (!usertest) return message.channel.send("You didn't mention anyone you want to DM a reminder.") 
 setTimeout(function(){ 
 let time =  message.guild.channels.find(c => c.name === '504743315741081600');
+let membertime = message.author;
 let mentioned = args.slice(20).join(" ");
 let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`${botmessage}${mentioned}`)
-usertest.send(testembed).then(time => time.send(`✉ Timer is done ${message.author.id}, they have recived the DM.`));
-}, ms(remindtime)); 
+usertest.send(testembed)
+time.send(`✉ Timer is done ${membertime}, they have received the DM.`);
+}, ms(remindtime));  
 }
 
 	
