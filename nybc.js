@@ -101,7 +101,7 @@ message.channel.send(helpEmbed);
 .addField("▫ Rule 5:", "Don't forget to check your e mail frequently.")
 .addField("▫ Rule 6:", "Use your leadership skills here.")
 .addField("Remember:", "You’re very much appreciated, don’t forget that.")
-.setFooter('Rules written by <@324708944507568130>.', message.guild.iconURL)
+.setFooter('Rules written by <@!324708944507568130>.', message.guild.iconURL)
 .setTimestamp();
 message.channel.send(ruleEmbed);
 
