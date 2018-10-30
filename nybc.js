@@ -88,6 +88,18 @@ message.channel.send(helpEmbed);
 
 }
 	
+	      if (message.content.toLowerCase().startsWith(`${prefix}rules`)) {
+  let helpEmbed = new Discord.RichEmbed()
+.setTitle("NYBC CLUB RULES")
+.setDescription("Down below are the rules of the server, please respect and follow them. Thank you:")
+.setColor("#2B547E") 
+.setImage("https://image.ibb.co/gpXksf/rule.png")
+.setThumbnail(client.user.displayAvatarURL)
+message.channel.send(helpEmbed);
+
+}
+	
+	
 	if (message.content.toLowerCase().startsWith(`${prefix}remind`)) {
 			  if (message.author.bot) return;
 if (!message.member.hasPermission("MANAGE_MESSAGES"))
