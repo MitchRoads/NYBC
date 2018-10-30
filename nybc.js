@@ -102,7 +102,7 @@ let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`${botmessage}`)
-timerChannel.send(testembed);
+timerChannel.send(testembed).then(message => timerChannel.send(`✉ The timer is done @everyone, look at the reminder above.`))
 }, ms(remindtime)); 
 }
 		if (message.content.toLowerCase().startsWith(`${prefix}directremind`)) {
@@ -123,7 +123,7 @@ let botmessage = args.slice(1).join(" ");
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
   .setDescription(`${botmessage}`)
-usertest.send(testembed).then(message => time.send(`✉ Timer is done ${membertime}, they have received the DM.`))
+usertest.send(testembed).then(message => time.send(`✉ The timer is done ${membertime}, they have received the DM.`))
 }, ms(remindtime));  
 }
 
