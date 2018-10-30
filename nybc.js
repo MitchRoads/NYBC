@@ -118,7 +118,7 @@ if (!usertest) return message.channel.send("You didn't mention anyone you want t
 let membertime = message.author;
 let mentioned = args.slice(25).join(" ");
 let botmessage = args.slice(1).join(" ");
-let time =  message.guild.channels.find(c => c.name === '504743315741081600');
+let time =  message.guild.channels.find(c => c.name === 'reminder-logs');
 setTimeout(function(){ 
   let testembed = new Discord.RichEmbed()
   .setColor("#2B547E") 
