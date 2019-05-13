@@ -16,6 +16,7 @@
     "superagent": "^3.8.3",
      "moment": "^2.22.2",
     "presence-timer": "^1.0.1",
-     "moment-duration-format": "^2.2.2"
+     "moment-duration-format": "^2.2.2",
+        "moment-timezone": "^0.5.23"
   }
 }
