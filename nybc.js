@@ -6,6 +6,7 @@ const { prefix, token } = require('./botconfig.json');
 const profanities = require('profanities')
 const moment = require('moment');
 const ms = require("ms");
+const moment2 = require('moment-timezone');
 require('moment-duration-format');
 
   client.on("ready", async () => {
@@ -158,31 +159,35 @@ usertest.send(testembed).then(message => time.send(`✉ The timer is done ${memb
 message.channel.send(tepEmbed);
 		      }
 	
-		if (message.content.toLowerCase().startsWith(`${prefix}userinfo`)) {
-
-            let player = message.mentions.members.first() || message.member
+		if (message.content.startsWith(`${prefix}userinfo`)) {
+	    let status = {false: "Human", true: "Bot"}
+	    let args = message.content.split(/ +/g).slice(1) 
+	    let avatarperson = args.join(' ')
+            let player = message.mentions.members.first() || message.guild.members.find(mem => mem.user.id === args[0]) || message.guild.members.find(mem => mem.user.tag === avatarperson) || message.guild.members.find(mem => mem.user.username === avatarperson) || message.guild.members.find(mem => mem.nickname === avatarperson) || message.member
             let iicon = player.user.displayAvatarURL;
-            let roles = player.roles.map(role => role).join(" ");
+            let roles = player.roles.filter(r => r.name !== "@everyone").map(r => `<@&${r.id}>`).join(' ').toString() || "None"
 	    let user = player.user
-        if(!user) return message.channel.send("You haven't selected/mentioned a user whose info you want to see.");
-            let userEmbed = new Discord.RichEmbed()
+	    let rolesize = player.roles.size - 1;
+            let highestrole = player.highestRole
+            let toprole = (highestrole != "@everyone") ? highestrole : "This user has no roles"
+	    let userEmbed = new Discord.RichEmbed()
             .setAuthor(`${user.username}'s Info`, user.displayAvatarURL)
             .setThumbnail(user.displayAvatarURL)
-            .setColor('#2B547E')
+            .setColor(0x374f6b)
             .addField('User ID', user.id, true)
             .addField('Current Tag', user.tag, true)
-            .addField('Server Nickname', `${player.displayName}`, true) 
-            .addField('Highest Member Role', `${player.highestRole.name}`, true)
-            .addField('Roles', `${roles}`)
+            .addField('Server Nickname', `${player.nickname || "None"}`, true) 
+            .addField('Highest Member Role', toprole, true)
+            .addField(`Roles [${rolesize}]`, `${roles}`)
             .addField('Game/Playing', `${(user.presence.game && user.presence.game && user.presence.game.name) || 'None'}`, true)
             .addField('Status', user.presence.status, true)
-            .addField('Bot', user.bot, true)
-            .addField('Joined At:', `${player.joinedAt}`)
-            .addField('Account Created On:', `${player.user.createdAt}`)
+            .addField('Bot/Human', status[user.bot], true)
+            .addField('Joined Server On:', `${moment2(player.joinedAt).format('LLLL')}` + '\n' + `${player.user.tag} joined` + ' ' + moment2(new Date()).diff(player.joinedAt, 'days') + ' days ago')
+            .addField('Account Created On:', `${moment2(player.user.createdAt).format('LLLL')}`)
             .setThumbnail(iicon)
             .setTimestamp();
 	return message.channel.send(userEmbed);
-	}
+	
 	
 	
 if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {		
@@ -195,11 +200,13 @@ if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {
     .addField('Guild ID', message.guild.id, true)
     .addField('Guild Name', message.guild.name, true)
     .addField('Guild Channel Total', message.guild.channels.size, true)
+    .addField('Guild Human Total', message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
+    .addField('Guild Bot Total', message.guild.members.filter(m => m.user.bot).size, true)
     .addField('Guild Member Total', message.guild.memberCount, true)
-    .addField('Guild Role Total', message.guild.roles.size, true)
+    .addField('Guild Role Total', message.guild.roles.size - 1, true)
     .addField('National Range', "US-West/East", true)
     .addField('Date Of Server Creation', message.guild.createdAt.toLocaleDateString(), true)
-    .addField('Guild Owner', message.guild.owner, true)
+    .addField('Guild Owner', message.guild.owner (message.guild.owner.user.tag), true)
     .setFooter(`${server}`, sicon)
     .setThumbnail(sicon) 
     .setTimestamp();
